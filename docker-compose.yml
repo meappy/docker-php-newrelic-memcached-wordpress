@@ -1,0 +1,31 @@
+version: '3.6'
+
+services:
+
+  wordpress:
+    build:
+      context: ./php
+      args:
+        - NR_LICENSE_KEY=${NR_LICENSE_KEY:-Redacted}
+        - NR_DOWNLOAD=${NR_DOWNLOAD:-newrelic-php5-8.7.0.242-linux.tar.gz}
+        - NR_APP_NAME=${NR_APP_NAME:-Application}
+        - WORDPRESS_VERSION=${WORDPRESS_VERSION:-php7.3-fpm}
+    container_name: wordpress
+    volumes:
+      - ${WORDPRESS_DATA_DIR:-./www/html/wordpress}:/var/www/html
+    environment:
+      - NR_LICENSE_KEY=${NR_LICENSE_KEY:-Redacted}
+      - NR_DOWNLOAD=${NR_DOWNLOAD:-newrelic-php5-8.7.0.242-linux.tar.gz}
+      - NR_APP_NAME=${NR_APP_NAME:-Application}
+      - WORDPRESS_DB_NAME=${WORDPRESS_DB_NAME:-wordpress}
+      - WORDPRESS_TABLE_PREFIX=${WORDPRESS_TABLE_PREFIX:-wp_}
+      - WORDPRESS_DB_HOST=${WORDPRESS_DB_HOST:-172.20.20.23}
+      - WORDPRESS_DB_USER=${WORDPRESS_DB_USER:-wordpress}
+      - WORDPRESS_DB_PASSWORD_FILE=${MYSQL_PASSWORD_FILE:-/run/secrets/mysql_password}
+    secrets:
+      - mysql_password
+    restart: always
+
+secrets:
+  mysql_password:
+    file: .secrets/mysql_password
