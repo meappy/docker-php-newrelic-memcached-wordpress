@@ -26,7 +26,13 @@ $ cp .env-example .env
 docker-compose up -d
 ```
 
-The container will be up and running at http://localhost:8080 and will display the PHP Info page.
+## New Relic App Name
+Drop `.user.ini` into the doc root, see example
+```
+$ cat .user.ini 
+newrelic.appname = "Default"
+```
 
 ## References
 - [Install the PHP agent with Docker](https://bit.ly/2Z7jQNj)
+- [PHP per-directory INI settings](https://bit.ly/2M9cHbp)
