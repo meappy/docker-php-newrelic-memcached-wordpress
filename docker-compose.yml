@@ -3,7 +3,7 @@ version: '3.6'
 services:
   wordpress:
     build:
-      context: ./php
+      context: .
       args:
         - NR_LICENSE_KEY=${NR_LICENSE_KEY:-REPLACE_WITH_REAL_KEY}
         - NR_DOWNLOAD=${NR_DOWNLOAD:-newrelic-php5-8.7.0.242-linux.tar.gz}
