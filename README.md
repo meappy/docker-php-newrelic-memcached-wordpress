@@ -3,31 +3,34 @@
 A usable Docker container with 
 - WordPress
 - PHP FPM 
-- Memcached Library
+- Memcached library (libmemcached)
 - New Relic PHP agent
 
 ## Prerequisite
-There is no MySQL container provided in this example, this is assumed that MySQL is running
+There is no MySQL container supplied in this example, this is assumed that MySQL is running for WordPress to operate
 
 ## Setup
 1. Clone this repo
 
-2. Modify docker-compose.yml file if required
-
-3. Make a copy of .env from .env-example
+2. Make a copy of .env from .env-example
 ```
 $ cp .env-example .env
 ```
 
-4. Modify .env to suit
+3. Modify .env to suit
 
-5. Deploy the container and daemonise with Docker Compose
+4. An example Docker Compose file is included, deploy & daemonise the container with the included Docker Compose file.
+   In most cases, this is not necessary, however modify docker-compose.yml file if required
 ```
 docker-compose up -d
 ```
 
 ## New Relic App Name
-Drop `.user.ini` into the doc root, see example
+There are 2 methods for naming the app in New Relic. 
+- NR_APP_NAME variable in .env
+- .user.ini file in the doc root of the web app
+
+I prefer to leave NR_APP_NAME intact and dropping `.user.ini` into the doc root, see example
 ```
 $ cat .user.ini 
 newrelic.appname = "Default"
