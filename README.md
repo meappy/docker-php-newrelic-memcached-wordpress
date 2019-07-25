@@ -7,7 +7,9 @@ A usable Docker container with
 - New Relic PHP agent
 
 ## Prerequisite
-There is no MySQL container supplied in this example, this is assumed that MySQL is running for WordPress to operate
+- There is no MySQL container supplied in this example, this is assumed that MySQL is running for WordPress to operate
+- If no New Relic license key is supploied, the container will not be built with New Relic PHP agent. You can choose to not have New
+  Relic built. Simply remove NR_LICENSE_KEY in .env file.
 
 ## Setup
 1. Clone this repo

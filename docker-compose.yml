@@ -6,7 +6,7 @@ services:
     volumes:
       - ${WORDPRESS_DATA_DIR:-./www/html/wordpress}:/var/www/html
     environment:
-      - NR_LICENSE_KEY=${NR_LICENSE_KEY:-REPLACE_WITH_REAL_KEY}
+      - NR_LICENSE_KEY=${NR_LICENSE_KEY}
       - NR_DOWNLOAD=${NR_DOWNLOAD:-newrelic-php5-8.7.0.242-linux.tar.gz}
       - NR_APP_NAME=${NR_APP_NAME:-Default}
       - WORDPRESS_DB_NAME=${WORDPRESS_DB_NAME:-wordpress}
