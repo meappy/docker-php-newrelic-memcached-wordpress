@@ -2,7 +2,7 @@ version: '3.6'
 
 services:
   wordpress:
-    image: meappy/php-newrelic-memcached-wordpress:latest
+    image: meappy/php-newrelic-memcached-wordpress:${NR_WORDPRESS_VERSION:-latest}
     volumes:
       - ${WORDPRESS_DATA_DIR:-./www/html/wordpress}:/var/www/html
     environment:
