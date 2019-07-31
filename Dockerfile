@@ -12,8 +12,8 @@ RUN apt-get -y update
 
 # Memcached client library
 RUN apt-get -y install libz-dev libmemcached-dev && \
-    pecl install memcached && \
-    docker-php-ext-enable memcached
+    yes '' | pecl install memcached redis && \
+    docker-php-ext-enable memcached redis
 
 # New Relic builds at run time
 CMD if [ -z "${NR_LICENSE_KEY}" ]; then \
