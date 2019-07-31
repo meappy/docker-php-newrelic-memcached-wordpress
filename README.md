@@ -4,6 +4,7 @@ A usable Docker container with
 - WordPress
 - PHP FPM 
 - Memcached library (libmemcached)
+- PHP Redis
 - New Relic PHP agent
 
 ## Prerequisite
