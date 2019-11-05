@@ -3,7 +3,6 @@ ARG WORDPRESS_VERSION
 FROM wordpress:${WORDPRESS_VERSION:-php7.3-fpm}
 
 # for build
-ARG NR_DOWNLOAD
 ARG NR_LICENSE_KEY
 ARG NR_APP_NAME
 
@@ -19,6 +18,7 @@ RUN apt-get -y install libz-dev libmemcached-dev && \
 # New Relic builds at run time
 CMD if [ -z "${NR_LICENSE_KEY}" ]; then \
       php-fpm; else \
+      export NR_DOWNLOAD="$(curl -s https://download.newrelic.com/php_agent/release/ | grep '\-linux.tar.gz' | perl -pe 's/<.*?>|\t//g')"; \
       curl -L "https://download.newrelic.com/php_agent/release/${NR_DOWNLOAD}" | tar -C /tmp -zx && \
       export NR_INSTALL_USE_CP_NOT_LN=1 && \
       export NR_INSTALL_SILENT=1 && \
